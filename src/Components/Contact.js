@@ -2,6 +2,19 @@ import React, { Component } from "react";
 import { Fade, Slide } from "react-reveal";
 
 class Contact extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { subject: "" };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ subject: event.target.value });
+    localStorage.setItem("subject", event.target.value);
+    console.log(this.setState);
+  }
+  
+
   render() {
     if (!this.props.data) return null;
 
@@ -13,6 +26,7 @@ class Contact extends Component {
     const phone = this.props.data.phone;
     const message = this.props.data.contactmessage;
 
+    
     return (
       <section id="contact">
         <Fade bottom duration={1000}>
